@@ -64,12 +64,15 @@ pipeline {
                 echo 'Running SonarQube analysis...'
                 script {
                     def scannerHome = tool 'SonarScanner'
-                    withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner"
+                    withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_TOKEN')]) {
+                        withSonarQubeEnv('SonarQube') {
+                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.login=${SONAR_TOKEN}"
+                        }
                     }
                 }
             }
         }
+
         
         stage('🚪 Quality Gate') {
             steps {
