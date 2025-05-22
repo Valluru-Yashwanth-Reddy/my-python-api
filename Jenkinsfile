@@ -59,13 +59,8 @@ pipeline {
             }
             post {
                 always {
-                    publishTestResults testResultsPattern: 'app/test-results.xml'
-                    publishCoverageReports(
-                        adapters: [
-                            coberturaAdapter('app/coverage.xml')
-                        ],
-                        sourceFileResolver: sourceFiles('STORE_LAST_BUILD')
-                    )
+                    junit 'test-results.xml'
+                    publishCoverage adapters: [coberturaAdapter('coverage.xml')
                 }
             }
         }
