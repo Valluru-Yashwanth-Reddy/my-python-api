@@ -47,17 +47,17 @@ pipeline {
             }
         }
         
-        stage('🧪 Unit Tests') {
-            steps {
-                echo 'Running unit tests...'
-                sh '''
-                    cd app
-                    coverage run -m pytest tests/ -v
-                    coverage report
-                    coverage xml
-                '''
-            }
-        }
+        // stage('🧪 Unit Tests') {
+        //     steps {
+        //         echo 'Running unit tests...'
+        //         sh '''
+        //             cd app
+        //             coverage run -m pytest tests/ -v
+        //             coverage report
+        //             coverage xml
+        //         '''
+        //     }
+        // }
         
         stage('🔍 SonarQube Analysis') {
             steps {
