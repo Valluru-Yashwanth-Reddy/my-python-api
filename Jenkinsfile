@@ -57,12 +57,6 @@ pipeline {
                     coverage xml
                 '''
             }
-            post {
-                always {
-                    junit 'test-results.xml'
-                    publishCoverage adapters: [coberturaAdapter('coverage.xml')
-                }
-            }
         }
         
         stage('🔍 SonarQube Analysis') {
