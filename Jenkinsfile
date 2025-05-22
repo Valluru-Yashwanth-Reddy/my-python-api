@@ -47,7 +47,7 @@ pipeline {
         
         stage('🧪 Unit Tests') {
             when {
-                not { params.SKIP_TESTS }
+                not { false }
             }
             steps {
                 echo 'Running unit tests...'
