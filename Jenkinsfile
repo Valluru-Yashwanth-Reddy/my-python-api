@@ -25,6 +25,8 @@ pipeline {
             steps {
                 echo 'Setting up Python environment...'
                 sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
                     python3 -m pip install --upgrade pip
                     pip install -r app/requirements.txt
                     pip install pytest coverage pylint flake8
