@@ -1,13 +1,5 @@
 pipeline {
     agent any
-    
-    environment {
-        DOCKER_REGISTRY = 'saipolaki'  // Replace with your Docker Hub username
-        IMAGE_NAME = 'my-python-text'
-        DEV_EC2_HOST = '3.110.218.88'        // Replace with your dev instance IP
-        PROD_EC2_HOST = 'your-prod-instance-ip'      // Replace with your prod instance IP
-    }
-    
     parameters {
         choice(
             name: 'ENVIRONMENT',
@@ -19,6 +11,14 @@ pipeline {
             defaultValue: false,
             description: 'Skip running tests'
         )
+    }
+    
+    
+    environment {
+        DOCKER_REGISTRY = 'saipolaki'  // Replace with your Docker Hub username
+        IMAGE_NAME = 'my-python-text'
+        DEV_EC2_HOST = '3.110.218.88'        // Replace with your dev instance IP
+        PROD_EC2_HOST = 'your-prod-instance-ip'      // Replace with your prod instance IP
     }
     
     stages {
