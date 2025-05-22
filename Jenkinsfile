@@ -25,6 +25,8 @@ pipeline {
             steps {
                 echo 'Setting up Python environment...'
                 sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
                     python3 -m pip install --upgrade pip
                     pip install -r app/requirements.txt
                     pip install pytest coverage pylint flake8
@@ -36,6 +38,7 @@ pipeline {
             steps {
                 echo 'Running code quality checks...'
                 sh '''
+                    . venv/bin/activate
                     echo "Running Flake8..."
                     flake8 app/ --max-line-length=100 --ignore=E501,W503 || true
                     
@@ -49,6 +52,7 @@ pipeline {
             steps {
                 echo 'Running unit tests...'
                 sh '''
+                    . venv/bin/activate
                     cd app
                     coverage run -m pytest tests/ -v
                     coverage report
