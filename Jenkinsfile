@@ -78,10 +78,15 @@ pipeline {
             steps {
                 echo 'Waiting for SonarQube Quality Gate...'
                 timeout(time: 5, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
+                    script {
+                        withSonarQubeEnv('SonarQube') {
+                            waitForQualityGate abortPipeline: true
+                        }
+                    }
                 }
             }
         }
+
         
         stage('🐳 Docker Build') {
             steps {
