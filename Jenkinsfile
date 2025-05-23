@@ -240,6 +240,6 @@ pipeline {
         failure {
             echo "❌ Pipeline failed!"
             echo "Please check the logs above for error details."
-        }
+        } */
     }
-} */
+} 
