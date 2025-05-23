@@ -7,10 +7,10 @@ pipeline {
     // 2. Boolean Parameter: name='SKIP_TESTS', default=false, description='Skip running tests'
     
     environment {
-        DOCKER_REGISTRY = 'saipolaki'  // Replace with your Docker Hub username
+        DOCKER_REGISTRY = 'yashwanth2003'  // Replace with your Docker Hub username
         IMAGE_NAME = 'my-python-text'
-        DEV_EC2_HOST = '3.110.218.88'        // Replace with your dev instance IP
-        PROD_EC2_HOST = 'your-prod-instance-ip'      // Replace with your prod instance IP
+        // DEV_EC2_HOST = '3.110.218.88'        // Replace with your dev instance IP
+        // PROD_EC2_HOST = 'your-prod-instance-ip'      // Replace with your prod instance IP
     }
     
     stages {
@@ -149,7 +149,7 @@ pipeline {
             }
         }
         
-        stage('🚀 Deploy to Environment') {
+       /* stage('🚀 Deploy to Environment') {
             steps {
                 echo "Deploying to ${env.ENVIRONMENT} environment..."
                 script {
@@ -242,4 +242,4 @@ pipeline {
             echo "Please check the logs above for error details."
         }
     }
-}
+} */
